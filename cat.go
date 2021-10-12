@@ -36,9 +36,7 @@ func CatSrc[
 
 func CatSink[
 	T any,
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Sink ~func(*T) (Sink, error),
 ](sinks ...Sink) Sink {
 
 	if len(sinks) == 0 {
