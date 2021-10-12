@@ -1,12 +1,8 @@
 package pp2
 
 func Copy[
-	Src interface {
-		~func() (*T, Src, error)
-	},
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Src ~func() (*T, Src, error),
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](src Src, sinks ...Sink) error {
 	for {

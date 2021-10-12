@@ -3,9 +3,7 @@ package pp2
 type Values[T any] []T
 
 func IterValues[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](v Values[T], cont Src) Src {
 	n := 0
@@ -22,9 +20,7 @@ func IterValues[
 }
 
 func CollectValues[
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](p *Values[T]) Sink {
 	return Tap[Sink](func(v T) error {

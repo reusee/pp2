@@ -1,9 +1,7 @@
 package pp2
 
 func Tap[
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](fn func(T) error) Sink {
 	var sink Sink

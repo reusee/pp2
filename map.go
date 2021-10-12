@@ -1,9 +1,7 @@
 package pp2
 
 func MapSrc[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](
 	src Src,
@@ -28,9 +26,7 @@ func MapSrc[
 }
 
 func MapSink[
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](
 	sink Sink,

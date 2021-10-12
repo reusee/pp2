@@ -1,9 +1,7 @@
 package pp2
 
 func FilterSrc[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](
 	src Src,
@@ -28,10 +26,8 @@ func FilterSrc[
 }
 
 func FilterSink[
+	Sink ~func(*T) (Sink, error),
 	T any,
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
 ](
 	sink Sink,
 	predict func(T) bool,

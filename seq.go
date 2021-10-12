@@ -1,9 +1,7 @@
 package pp2
 
 func Seq[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](values ...T) Src {
 	var src Src

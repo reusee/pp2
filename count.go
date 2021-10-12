@@ -1,9 +1,7 @@
 package pp2
 
 func CountSink[
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](n *int) Sink {
 	*n = 0
@@ -20,9 +18,7 @@ func CountSink[
 }
 
 func CountSrc[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](n *int, src Src, cont Src) Src {
 	*n = 0

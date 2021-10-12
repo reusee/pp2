@@ -1,9 +1,7 @@
 package pp2
 
 func Alt[
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](sinks ...Sink) Sink {
 	var sink Sink

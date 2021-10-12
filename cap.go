@@ -1,9 +1,7 @@
 package pp2
 
 func CapSrc[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](src Src, n int, cont Src) Src {
 	var ret Src

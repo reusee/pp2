@@ -1,9 +1,7 @@
 package pp2
 
 func CatSrc[
-	Src interface {
-		~func() (*T, Src, error)
-	},
+	Src ~func() (*T, Src, error),
 	T any,
 ](srcs ...Src) Src {
 

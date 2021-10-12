@@ -1,24 +1,16 @@
 package pp2
 
 func Tee[
-	Src interface {
-		~func() (*T, Src, error)
-	},
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Src ~func() (*T, Src, error),
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](src Src, sinks ...Sink) Src {
 	return TeeSrc[Src, Sink](src, sinks, nil)
 }
 
 func TeeSrc[
-	Src interface {
-		~func() (*T, Src, error)
-	},
-	Sink interface {
-		~func(*T) (Sink, error)
-	},
+	Src ~func() (*T, Src, error),
+	Sink ~func(*T) (Sink, error),
 	T any,
 ](
 	src Src,
