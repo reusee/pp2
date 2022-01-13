@@ -9,7 +9,7 @@ func CapSrc[
 		if n == 0 {
 			return nil, cont, nil
 		}
-		value, err := Get[Src](&src)
+		value, err := Get[Src, T](&src)
 		if err != nil {
 			return nil, nil, err
 		}

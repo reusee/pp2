@@ -10,7 +10,7 @@ func MapSrc[
 ) Src {
 	var ret Src
 	ret = func() (*T, Src, error) {
-		value, err := Get[Src](&src)
+		value, err := Get[Src, T](&src)
 		if err != nil {
 			return nil, nil, err
 		}
