@@ -26,8 +26,8 @@ func TestCapSrc(t *testing.T) {
 
 	values = values[:0]
 	if err := Copy(
-		CapSrc(
-			Seq[int, IntSrc](1),
+		CapSrc[IntSrc, int](
+			Seq[IntSrc, int](1),
 			2,
 			nil,
 		),

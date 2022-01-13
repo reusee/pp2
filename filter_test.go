@@ -71,7 +71,7 @@ func TestFilterSink(t *testing.T) {
 	}
 
 	var even, odd []int
-	if err := Copy[int, IntSrc, IntSink](
+	if err := Copy[IntSrc, IntSink, int](
 		Tee(
 			src,
 			FilterSink(
@@ -87,7 +87,7 @@ func TestFilterSink(t *testing.T) {
 				},
 			),
 		),
-		Discard[int, IntSink],
+		Discard[IntSink],
 	); err != nil {
 		t.Fatal(err)
 	}

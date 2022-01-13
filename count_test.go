@@ -15,9 +15,9 @@ func TestCount(t *testing.T) {
 
 	var c int
 	var c2 int
-	if err := Copy(
+	if err := Copy[IntSrc, IntSink, int](
 		CountSrc(&c2, src, nil),
-		CountSink[int, IntSink](&c),
+		CountSink[IntSink, int](&c),
 	); err != nil {
 		t.Fatal(err)
 	}

@@ -4,9 +4,9 @@ import "testing"
 
 func TestMapFilterSrc(t *testing.T) {
 	var values Values[int]
-	if err := Copy(
+	if err := Copy[IntSrc, IntSink](
 		MapFilterSrc(
-			Seq[int, IntSrc](1, 2, 3),
+			Seq[IntSrc](1, 2, 3),
 			func(i int) *int {
 				if i == 2 {
 					return nil
@@ -15,7 +15,7 @@ func TestMapFilterSrc(t *testing.T) {
 			},
 			nil,
 		),
-		CollectValues[int, IntSink](&values),
+		CollectValues[IntSink](&values),
 	); err != nil {
 		t.Fatal(err)
 	}
@@ -32,10 +32,10 @@ func TestMapFilterSrc(t *testing.T) {
 
 func TestMapFilterSink(t *testing.T) {
 	var values Values[int]
-	if err := Copy(
-		Seq[int, IntSrc](1, 2, 3),
+	if err := Copy[IntSrc, IntSink](
+		Seq[IntSrc](1, 2, 3),
 		MapFilterSink(
-			CollectValues[int, IntSink](&values),
+			CollectValues[IntSink](&values),
 			func(i int) *int {
 				if i == 2 {
 					return nil

@@ -26,13 +26,13 @@ func TestTee(t *testing.T) {
 	}
 
 	var ints1, ints2 []int
-	if err := Copy[int, IntSrc, IntSink](
+	if err := Copy[IntSrc, IntSink](
 		Tee(
 			src,
 			collect(&ints1),
 			collect(&ints2),
 		),
-		Discard[int, IntSink],
+		Discard[IntSink],
 	); err != nil {
 		t.Fatal(err)
 	}

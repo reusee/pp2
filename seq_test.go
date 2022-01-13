@@ -4,9 +4,9 @@ import "testing"
 
 func TestSeq(t *testing.T) {
 	var n int
-	if err := Copy(
-		Seq[int, IntSrc](1, 2, 3),
-		CountSink[int, IntSink](&n),
+	if err := Copy[IntSrc, IntSink](
+		Seq[IntSrc](1, 2, 3),
+		CountSink[IntSink](&n),
 	); err != nil {
 		t.Fatal(err)
 	}
@@ -14,9 +14,9 @@ func TestSeq(t *testing.T) {
 		t.Fatalf("got %d", n)
 	}
 
-	if err := Copy[int, IntSrc, IntSink](
-		Seq[int, IntSrc](1, 2, 3),
-		Discard[int, IntSink],
+	if err := Copy[IntSrc, IntSink](
+		Seq[IntSrc](1, 2, 3),
+		Discard[IntSink],
 	); err != nil {
 		t.Fatal(err)
 	}

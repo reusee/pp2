@@ -4,13 +4,13 @@ import "testing"
 
 func TestSkip(t *testing.T) {
 	var values Values[int]
-	if err := Copy(
+	if err := Copy[IntSrc, IntSink](
 		SkipSrc(
-			Seq[int, IntSrc](1, 2, 3, 4, 5),
+			Seq[IntSrc](1, 2, 3, 4, 5),
 			1,
 			nil,
 		),
-		CollectValues[int, IntSink](&values),
+		CollectValues[IntSink](&values),
 	); err != nil {
 		t.Fatal(err)
 	}
