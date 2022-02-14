@@ -10,7 +10,7 @@ func Copy[
 			break
 		}
 
-		value, err := Get[Src, T](&src)
+		value, err := Get(&src)
 		if err != nil {
 			return err
 		}

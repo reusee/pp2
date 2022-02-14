@@ -4,7 +4,7 @@ import "testing"
 
 func TestMapFilterSrc(t *testing.T) {
 	var values Values[int]
-	if err := Copy[IntSrc, IntSink](
+	if err := Copy(
 		MapFilterSrc(
 			Seq[IntSrc](1, 2, 3),
 			func(i int) *int {
@@ -32,7 +32,7 @@ func TestMapFilterSrc(t *testing.T) {
 
 func TestMapFilterSink(t *testing.T) {
 	var values Values[int]
-	if err := Copy[IntSrc, IntSink](
+	if err := Copy(
 		Seq[IntSrc](1, 2, 3),
 		MapFilterSink(
 			CollectValues[IntSink](&values),

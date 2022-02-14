@@ -5,7 +5,7 @@ func Tee[
 	Sink ~func(*T) (Sink, error),
 	T any,
 ](src Src, sinks ...Sink) Src {
-	return TeeSrc[Src, Sink, T](src, sinks, nil)
+	return TeeSrc(src, sinks, nil)
 }
 
 func TeeSrc[
@@ -19,7 +19,7 @@ func TeeSrc[
 ) Src {
 	var ret Src
 	ret = func() (*T, Src, error) {
-		value, err := Get[Src, T](&src)
+		value, err := Get(&src)
 		if err != nil {
 			return nil, nil, err
 		}

@@ -7,5 +7,5 @@ func Discard[
 	if v == nil {
 		return nil, nil
 	}
-	return Discard[Sink, T], nil
+	return Discard[Sink], nil
 }

@@ -18,7 +18,7 @@ func CatSrc[
 
 	var fn Src
 	fn = func() (*T, Src, error) {
-		value, err := Get[Src, T](&srcs[0])
+		value, err := Get(&srcs[0])
 		if err != nil {
 			return nil, nil, err
 		}

@@ -4,7 +4,7 @@ import "testing"
 
 func TestSkip(t *testing.T) {
 	var values Values[int]
-	if err := Copy[IntSrc, IntSink](
+	if err := Copy(
 		SkipSrc(
 			Seq[IntSrc](1, 2, 3, 4, 5),
 			1,
