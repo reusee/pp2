@@ -71,7 +71,7 @@ func TestFilterSink(t *testing.T) {
 	}
 
 	var even, odd []int
-	if err := Copy[IntSrc, IntSink, int](
+	if err := Copy[IntSrc, IntSink](
 		Tee(
 			src,
 			FilterSink(
